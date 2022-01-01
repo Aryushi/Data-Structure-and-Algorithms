@@ -49,6 +49,22 @@ int height(TreeNode<int>* root){
     }
     return maxm+1;
 }
+//how far from root node
+//depth or level of node
+//print all nodes at level k
+//if value of k becomes 0 print the data
+void depth(int k,TreeNod1e<int>* root){
+    if(root==NULL){
+        return;
+    }
+    if(k==0){
+        cout<<root->data<<" ";
+        return;
+    }
+    for(int i=0;i<root->children.size();i++){
+       depth(k-1,root->children[i]);
+    }
+}
 //taking input in level order
 TreeNode<int>* takeinput(){
     int rootdata;
@@ -82,4 +98,10 @@ int main(){
     printTree(root);
     cout<<"No of nodes :"<<countNode(root)<<endl;
     cout<<"height of tree :"<<height(root)<<endl;
+    int k;
+    cout<<"Enter the level of tree to be printed :";
+    cin>>k;
+    cout<<"All the nodes at level "<<k<<" are :";
+    depth(k,root);
+    cout<<endl;
 }
